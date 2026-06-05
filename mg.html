@@ -168,8 +168,11 @@
   <div class="overlay" id="desktop-overlay">
     <div class="modal">
       <h2>Uporabljate računalnik</h2>
-      <p>Ta stran je namenjena mobilnim telefonom. Preusmerili vas bomo na <strong>moj.generali.si</strong>.</p>
-      <a class="btn-red" href="https://moj.generali.si">Nadaljuj</a>
+      <p>Ta stran je namenjena mobilnim telefonom. Za dostop do portala Moj Generali obiščite <strong>moj.generali.si</strong>.</p>
+      <div style="display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;">
+        <a class="btn-red" href="https://moj.generali.si">Odpri moj.generali.si</a>
+        <button class="btn-red" id="close-modal" style="background:transparent;border:2px solid #c21b17;color:#c21b17;">Nazaj</button>
+      </div>
     </div>
   </div>
 
@@ -188,16 +191,21 @@
     var ua = navigator.userAgent;
     var isMobile = /iPhone|iPad|iPod|Android/i.test(ua);
     var ios = /iPhone|iPad|iPod/i.test(ua);
+    var overlay = document.getElementById('desktop-overlay');
+    var storeBtn = document.getElementById('store-btn');
 
-    if (!isMobile) {
-      document.getElementById('desktop-overlay').classList.add('active');
-      setTimeout(function () {
-        window.location.href = 'https://moj.generali.si';
-      }, 4000);
-    } else {
-      document.getElementById('store-btn').href = ios
+    if (isMobile) {
+      storeBtn.href = ios
         ? 'https://apps.apple.com/si/app/moj-generali-slovenija/id6738954548'
         : 'https://play.google.com/store/apps/details?id=si.generali.moj.generali';
+    } else {
+      storeBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        overlay.classList.add('active');
+      });
+      document.getElementById('close-modal').addEventListener('click', function () {
+        overlay.classList.remove('active');
+      });
     }
   </script>
 
