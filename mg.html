@@ -175,6 +175,13 @@
   </main>
 
   <script>
+    if (window.parent !== window) {
+      document.body.style.minHeight = 'auto';
+      window.addEventListener('load', function () {
+        window.parent.postMessage({ mgHeight: document.body.scrollHeight }, '*');
+      });
+    }
+
     var ua = navigator.userAgent;
     var isMobile = /iPhone|iPad|iPod|Android/i.test(ua);
     var ios = /iPhone|iPad|iPod/i.test(ua);
