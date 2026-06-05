@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Namestite aplikacijo Moj Generali</title>
+  <title>Moj Generali</title>
   <style>
     body {
       font-family: system-ui, sans-serif;
@@ -19,38 +19,29 @@
       padding: 24px;
     }
     h1 { font-size: 22px; font-weight: 600; margin: 0 0 8px; }
-    p  { opacity: 0.65; margin: 0 0 28px; font-size: 15px; }
+    p  { opacity: 0.65; margin: 0 0 36px; font-size: 15px; }
     .btn {
       display: inline-block;
-      padding: 14px 32px;
+      padding: 16px 40px;
       border-radius: 999px;
-      font-weight: 600;
-      font-size: 16px;
+      font-weight: 700;
+      font-size: 18px;
       text-decoration: none;
-    }
-    .btn-secondary {
-      background: none;
-      border: 1px solid rgba(244,236,223,0.3);
-      color: #F4ECDF;
-      margin-top: 16px;
-      font-size: 14px;
-      opacity: 0.8;
+      background: #F4ECDF;
+      color: #5c1a0a;
     }
   </style>
 </head>
 <body>
   <h1>Moj Generali</h1>
-  <p>Odpiramo trgovino…</p>
-  <a class="btn btn-secondary" id="store-link" href="#">Namesti iz trgovine</a>
+  <p>Tapnite gumb za namestitev aplikacije.</p>
+  <a class="btn" id="store-link" href="#">Namesti aplikacijo</a>
 
   <script>
     var ios = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    var url = ios
+    document.getElementById('store-link').href = ios
       ? 'https://apps.apple.com/si/app/moj-generali-slovenija/id6738954548'
       : 'https://play.google.com/store/apps/details?id=si.generali.moj.generali';
-
-    document.getElementById('store-link').href = url;
-    window.location.replace(url);
   </script>
 </body>
 </html>
