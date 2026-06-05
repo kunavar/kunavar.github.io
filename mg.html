@@ -44,29 +44,13 @@
   <a class="btn btn-secondary" id="store-link" href="#">Namesti iz trgovine</a>
 
   <script>
-    var ios      = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    var storeUrl = ios
+    var ios = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    var url = ios
       ? 'https://apps.apple.com/si/app/moj-generali-slovenija/id6738954548'
       : 'https://play.google.com/store/apps/details?id=si.generali.moj.generali';
-    var directUrl = ios
-      ? 'itms-apps://itunes.apple.com/app/id6738954548'
-      : 'market://details?id=si.generali.moj.generali';
 
-    document.getElementById('store-link').href = storeUrl;
-
-    var storeOpened = false;
-
-    window.addEventListener('blur', function () { storeOpened = true; });
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) storeOpened = true;
-    });
-
-    window.location.href = directUrl;
-
-    // Če store app ni nameščen → po 2 s odpri spletno stran
-    setTimeout(function () {
-      if (!storeOpened) window.location.href = storeUrl;
-    }, 2000);
+    document.getElementById('store-link').href = url;
+    window.location.replace(url);
   </script>
 </body>
 </html>
