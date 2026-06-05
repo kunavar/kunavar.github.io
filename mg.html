@@ -113,21 +113,19 @@
   <main>
     <div class="card">
       <p class="label">Naložite Moj Generali</p>
-      <h1>Kateri telefon uporabljate?</h1>
-      <p class="desc">Obiščite svojo spletno trgovino za aplikacije in prenesite aplikacijo Moj Generali.</p>
+      <h1>Prenesite aplikacijo</h1>
+      <p class="desc">S klikom na spodnji gumb se odpre trgovina za prenos aplikacije Moj Generali.</p>
       <div class="buttons">
-        <a id="btn-android" class="btn btn-primary" href="https://play.google.com/store/apps/details?id=si.generali.moj.generali">Android</a>
-        <a id="btn-ios" class="btn btn-secondary" href="https://apps.apple.com/si/app/moj-generali-slovenija/id6738954548">iPhone</a>
+        <a id="store-btn" class="btn btn-primary" href="#">Namesti aplikacijo</a>
       </div>
     </div>
   </main>
 
   <script>
     var ios = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (ios) {
-      document.getElementById('btn-ios').classList.replace('btn-secondary', 'btn-primary');
-      document.getElementById('btn-android').classList.replace('btn-primary', 'btn-secondary');
-    }
+    document.getElementById('store-btn').href = ios
+      ? 'https://apps.apple.com/si/app/moj-generali-slovenija/id6738954548'
+      : 'https://play.google.com/store/apps/details?id=si.generali.moj.generali';
   </script>
 
 </body>
